@@ -1,0 +1,34 @@
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>
+<div class="row" *ngIf="rutasPrograma?.length > 0;else content">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sede</th>
+                <th>Pograma</th>
+                <th>Ruta</th>
+                <th>Creditos ruta</th>
+                <th>Me gusta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of rutasPrograma" >
+                <td>{{ item.sede }}</td>
+                <td>{{ item.programa }}</td>
+                <td><a [routerLink]="['/asignaturasusuarios',item.cod_ruta,item.cod_uniprograma]"  >{{ item.nombre_ruta }}</a></td>
+                <td>{{ item.cred_ruta }}</td>
+                <td>{{ item.likes }} <i class="fa fa-thumbs-up text-primary "  > </i></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<ng-template #content>
+        <div class="text-center" >
+            <p class="lead">No hay rutas que le gusten</p>
+        </div>
+</ng-template>
+
+

@@ -1,0 +1,13 @@
+.regresar {
+    padding-right: 14px;
+    padding-bottom: 5px;
+}
+.like-ruta p{
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+
+}
+.btn-default-outline {
+    background-color: transparent;
+    border-color: #ccc;
+  }

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="regresar text-right "><a [routerLink]="['/rutas']" class="btn btn-success" >Volver a rutas</a></div>
+</div>
+<div class="alert like-ruta" >
+  <p>  
+      <b>Programa: </b>{{programa_actual}}<br />
+      <b>Ruta: </b>{{nombre_ruta}}
+  </p>    
+</div>
+
+<div class="row">
+  <div class="row col-md-2">
+  </div>
+
+  <div class="row col-md-8">
+    <span *ngFor="let asignatura of asignaturas">
+      <div class="asignatura">
+        <input type="checkbox" id="asignatura{{ asignatura.cod_asignatura }}">
+        <label for="asignatura{{ asignatura.cod_asignatura }}">
+
+          <div class="titleasignatura">
+            <b>{{ asignatura.nombre_asignatura }}</b>
+          </div>
+          <div class="bodyasignatura">
+            <b>Código:</b> {{asignatura.cod_asignatura}} <br  />
+            <b>Créditos:</b> {{ asignatura.creditos }} <br  />
+            <span *ngIf="asignatura.cod_componente"><b>Componente: </b>{{ asignatura.cod_componente }}</span>
+            <span *ngIf="!asignatura.cod_componente"><b>Componente: </b>L</span>
+            <br  />
+          </div>
+        </label>
+        <div class="prerrequisitos"><b>Prerrequisitos:</b><br />
+          <span *ngIf="asignatura.prerrequisito=='' && asignatura.prerrequisito_cred==''">
+            La asignatura no tiene prerrequisitos en este plan de estudios.
+          </span>
+          <span *ngFor="let prerrequisito of asignatura.prerrequisito">
+            {{ prerrequisito.cod_prerrequisito }} - {{ prerrequisito.nombre_asignatura }} <br />
+          </span>
+          <span *ngFor="let prerrequisito_cred of asignatura.prerrequisito_cred">
+            Haber aprobado {{ prerrequisito_cred.prerrequisito_creditos }} créditos del(los) componente(s): {{ prerrequisito_cred.prerrequisito_componente }} <br />
+          </span>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>

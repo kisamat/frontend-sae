@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="regresar text-right "><a [routerLink]="['/home']" class="btn btn-success" >Volver al inicio</a></div>
+</div>
+
+<br style="wrap:both">
+<div class="row">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li routerLinkActive="active"><a [routerLink]="['comunidad']">Rutas comunidad</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['misrutas']">Mis rutas</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['mislikes']">Mis likes</a></li>
+        </ul>
+
+    </div>
+    <div class="col-md-9">
+        <router-outlet>
+
+        </router-outlet>
+    </div>
+    
+
+</div>

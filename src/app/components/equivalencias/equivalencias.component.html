@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-2" >
+
+  </div>
+  <div class="col-md-8 col-xs-12">
+      <div class="regresar text-right "><a [routerLink]="['/home']" class="btn btn-success" >Volvel al inicio</a></div>
+  </div>
+</div>
+<br style="wrap:both">
+<div class="row ">
+        <div class="col-md-2" >
+
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <label for="idsede">Seleccione el programa de origen</label>
+          <select [(ngModel)]="idprograma1" name="idprograma1"  #ctrl="ngModel" (change)='listarProgramasDestino()' class="form-control">
+              <option [ngValue]="products">------</option>
+              <option *ngFor="let prog1 of programasOrigen" [value]="prog1.cod_uniprograma" > {{ prog1.nombre }}  </option>
+          </select>
+        </div>
+        <!--<div class="col-md-2 col-xs-6">
+            <button (click)="listarFacultades()" type="button" class="btn btn-info" >Ver facultades</button>
+    </div>-->
+</div>
+<br style="wrap:both">
+<div class="row" *ngIf="programasDestino.length>0">
+          <div class="col-md-2" >
+          </div>
+          <div class="col-md-8 col-xs-12">
+          <label for="idfacultad">Seleccione el programa de destino</label>
+          <select [(ngModel)]="idprograma2" name="idprograma2" (change)='listarEquivalencias()'  #ctrl="ngModel" class="form-control">
+              <option [ngValue]="products">------</option>
+              <option *ngFor="let prog2 of programasDestino" [value]="prog2.cod_uniprograma"  > {{ prog2.nombre }}  </option>
+          </select>
+        </div>
+        <!--<div class="col-md-2 col-xs-6">
+            <button (click)="listarProgramas()" type="button" class="btn btn-info" >Ver programas</button>
+        </div>-->
+</div>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>
+<br style="wrap:both">
+<div class="row" *ngIf="equivalencias.length>0" >
+  <div class="col-md-2" >
+  </div>
+  <div class="col-md-8 col-xs-12">
+      <table class="table table-users table-responsive">
+          <thead  >
+              <tr class="header">
+                <th colspan="3" class="text-center" >
+                    Materias programa de origen
+                </th>
+                <th  colspan="3" class="text-center">
+                    Materias programa de destino
+                </th>
+              </tr>
+              <tr class="header">
+                <th class="text-center" >
+                    Codigo de la asignatura
+                </th>
+                <th  class="text-center">
+                    Nombre de la asignatura
+                </th>
+                <th  class="text-center">
+                    Creditos de la asignatura
+                </th>
+                <th class="text-center" >
+                    Codigo de la asignatura
+                </th>
+                <th  class="text-center">
+                    Nombre de la asignatura
+                </th>
+                <th  class="text-center">
+                    Creditos de la asignatura
+                </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let equivalencia of equivalencias">
+                <td>{{ equivalencia.codasigo }}</td>
+                <td>{{ equivalencia.nomasigo }}</td>
+                <td>{{ equivalencia.credasigo }}</td>
+                <td>{{ equivalencia.codasigd }}</td>
+                <td>{{ equivalencia.nomasigd }}</td>
+                <td>{{ equivalencia.credasigd }}</td>
+              </tr>
+          </tbody>
+
+      </table>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="col-md-12">
+    <br />
+<form class="example-form" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+  <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Buscar asignaturas" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of searchResult" [value]="item">
+          {{ item }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+</div>
+  <!--- Buttons Block --->
+            <div class="form-group">
+                <button type="reset" class="btn btn-default">Limpiar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+</form>
+<table class="table">
+  <thead>
+      <tr>
+          <th class="text-center" >Asignaturas</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody *ngIf="asignaturas?.length > 0;else content">
+      <tr *ngFor="let item of asignaturas; let i = index" >
+          <td>{{ item}}</td>
+          <td><button (click)="eliminarItem(i)" class="btn  btn-outline" ><i class="fa fa-trash text-danger" title="Eliminar ruta"  > </i></button></td>
+      </tr>
+      <tr>
+        <td colspan="2" >
+            <button (click)="guardarLista()" > Actualizar lista  </button>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>

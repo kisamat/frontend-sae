@@ -1,0 +1,136 @@
+
+<div class="row">
+  <div class="col-md-2" >
+
+  </div>
+  <div class="col-md-8 col-xs-12">
+      <div class="regresar text-right "><a [routerLink]="['/home']" class="btn btn-success" >Volvel al inicio</a></div>
+  </div>
+</div>
+<br style="wrap:both">
+<div class="row ">
+        <div class="col-md-8 col-xs-12 alert alert-info" style="line-height: normal">
+          <p>
+              Las <b>Rutas Curriculares</b> Son los trayectos que el estudiante encuentra dentro del plan de estudios que visibilizan las oportunidades académicas que le permitirán la consecución de sus intereses y necesidades de formación.
+          </p>
+          <p>
+              Las rutas contienen la información de asignaturas optativas y de libre elección, que están articuladas con los objetivos del programa, campos de acción profesional y perfiles del egresado, facilitando que el estudiante oriente la elección de asignaturas con miras al ejercicio futuro de su profesión.
+          </p>
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <label for="idsede">Seleccione la sede</label>
+          <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
+              <option [ngValue]="products">-- Seleccione la sede --</option>
+              <option *ngFor="let sede of sedes" [value]="sede.cod_sede" [selected]="idsede == sede.cod_sede"> {{ sede.sede }}  </option>
+          </select>
+        </div>
+        <!--<div class="col-md-2 col-xs-6">
+            <button (click)="listarFacultades()" type="button" class="btn btn-info" >Ver facultades</button>
+    </div>-->
+</div>
+<br style="wrap:both">
+<div class="row" *ngIf="facultades.length>0">
+          <div class="col-md-2" >
+          </div>
+          <div class="col-md-8 col-xs-12">
+          <label for="idfacultad">Seleccione la facultad</label>
+          <select [(ngModel)]="idfacultad" name="idfacultad" (change)='listarProgramas()'  #ctrl="ngModel" class="form-control">
+              <option [ngValue]="products">-- Seleccione la facultad --</option>
+              <option *ngFor="let facultad of facultades" [value]="facultad.cod_facultad"  > {{ facultad.facultad }}  </option>
+          </select>
+        </div>
+        <!--<div class="col-md-2 col-xs-6">
+            <button (click)="listarProgramas()" type="button" class="btn btn-info" >Ver programas</button>
+        </div>-->
+</div>
+<br style="wrap:both">
+<div class="row" *ngIf="programas.length>0">
+          <div class="col-md-2" >
+          </div>
+          <div class="col-md-8 col-xs-12">
+          <label for="idprograma">Seleccione el programa</label>
+          <select [(ngModel)]="idprograma" name="idprograma" (change)='verRutasPrograma()' #ctrl="ngModel" class="form-control">
+              <option [ngValue]="products2">-- Seleccione el programa --</option>
+              <option *ngFor="let programa of programas" [value]="programa.cod_uniprograma"  > {{ programa.programa }}  </option>
+          </select>
+        </div>
+        <!--<div class="col-md-2 col-xs-6">
+            <button (click)="verRutasPrograma()" type="button" class="btn btn-info" >Ver rutas</button>
+    </div>-->
+</div>
+<br style="wrap:both">
+<div class="row" *ngIf="rutasPrograma" >
+  <div *ngFor="let ruta of rutasPrograma">
+    <div class="col-md-2" >
+    </div>
+    <div class="ruta col-md-4 text-md-center" >
+          <a [routerLink]="['/asignaturas',ruta.cod_ruta,idprograma]"  >
+          <div class="titleruta">
+            <b>RUTA - </b>{{ ruta.nombre_ruta }}
+          </div>
+        <div class="textoruta">
+          <b>Créditos: </b>{{ ruta.cred_ruta }}<br />
+          <b>Descripción:</b> {{ ruta.descripcion_ruta }}
+        </div>
+        </a>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>
+
+<!--<form>
+<div class="row">
+        <div class="col-xs-9">
+          <select #categoriesCtrl (change)='SelectedValue = categoriesCtrl.value' class="form-control">
+              <option [ngValue]="products">-- Seleccione la sede --</option>
+              <option *ngFor="let sede of sedes" [value]="sede.cod_sede" [selected]="SelectedValue == sede.cod_sede" > {{ sede.sede }}  </option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+            <button (click)="listarFacultades(SelectedValue)" type="button" class="btn btn-outline-danger" >Ver facultades</button>
+        </div>
+</div>
+<div class="row">
+        <div class="col-xs-9">
+          <select #facultadCtrl (change)='FacultadValue = facultadCtrl.value' class="form-control">
+              <option [ngValue]="products">-- Seleccione la facultad --</option>
+              <option *ngFor="let facultad of facultades" [value]="facultad.cod_facultad" [selected]="FacultadValue == facultad.cod_facultad" > {{ facultad.facultad }}  </option>
+          </select>
+        </div>
+        <div class="col-xs-3">
+            <button (click)="listarProgramas(FacultadValue)" type="button" class="btn btn-outline-danger" >Ver programas</button>
+        </div>
+</div>
+</form>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>
+
+{{ _programas|json }}
+<a href="" *ngFor="let programa of _programas.Programas">
+  {{programa.cod_uniprograma}}
+</a>
+
+
+<br />
+<div class="row" style="margin-left: auto; margin-right: auto">
+  <form>
+      <div class="col-md-5">
+        <select #sedesCtrl="ngForm" ngControl="sedesCtrl" class="form-control">
+          <option [ngValue]="products">-- Seleccione la sede --</option>
+          <option *ngFor="let sede of sedes" [value]="sede.cod_s === opcion0 ? NULL: programa.cod_uniprograma " [selected]="cod_uniprograma == programa.cod_uniprograma"> {{ programa.sede }} - {{ programa.programa }} </option>
+        </select>
+      </div>
+      <div class="col-md-5">
+          <button (click)="borrarHeroe(k)" type="button" class="btn btn-outline-danger" >Eliminar</button>
+      </div>
+  </form>
+</div>
+
+
+
+
+-->

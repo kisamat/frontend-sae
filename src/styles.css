@@ -1,0 +1,260 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.mainmenu {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.ruta {
+  margin: 10px;
+  border: 1px solid #1A6AA7;
+  padding: 10px;
+  background-color: #1A6AA7;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  border-radius: 15px;
+  line-height: 16pt;
+  transition: background-color 0.4s ease;
+  /*min-height: 310px;*/
+}
+
+.ruta a{
+  color: #ffffff;
+}
+
+.rutas {
+
+  border: 2px solid #1A6AA7;
+  padding: 10px;
+  background-color: #1A6AA7;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  border-radius: 15px;
+  line-height: 16pt;
+  transition: background-color 0.4s ease;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.dtitulacion {
+  margin: 10px;
+  border: 1px solid #84bf05;
+  padding: 10px;
+  background-color: #50992e;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  border-radius: 15px;
+  line-height: 16pt;
+  transition: background-color 0.4s ease;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.virtual {
+  margin: 10px;
+  border: 1px solid #afafaf;
+  padding: 10px;
+  background-color: #76232f;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  border-radius: 15px;
+  line-height: 16pt;
+  transition: background-color 0.4s ease;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.rutas:hover, .ruta:hover {
+    background-color: #1f7bc1;
+}
+
+.dtitulacion:hover {
+    background-color: #5db135;
+}
+
+.virtual:hover {
+    background-color: #942c3b;
+}
+
+.rutas > .icon, .dtitulacion > .icon, .virtual > .icon {
+  border-right: 3px solid #afafaf;
+  border-bottom: 3px solid #afafaf;
+  height: 90px;
+  border-radius: 15px;
+}
+
+.rutas > .name, .dtitulacion > .name, .virtual > .name {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 24px;
+  /*font-weight: bold;*/
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.rutas > .icon {
+  background-image: url(./assets/images/icons/routes.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dtitulacion > .icon {
+  background-image: url(./assets/images/icons/certificate.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.virtual > .icon {
+  background-image: url(./assets/images/icons/virtual.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.titleruta {
+  border-bottom: 1px dashed   #fff;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  padding-left: 12px;
+}
+
+.textoruta {
+  text-align : justify;
+  padding : 12px;
+  line-height: 1.5em;
+}
+
+/*-------------ASIGNATURA_____________*/
+.asignatura {
+  color: #1A6AA7;
+  margin: 10px;
+  border: 2px solid #1A6AA7;
+  padding: 10px;
+  background-color: #efefef;
+  text-decoration: none;
+  font-family: "Ancizar sans", Tahoma, Geneva, sans-serif;
+  border-radius: 6px;
+  line-height: 16pt;
+  transition: background-color 0.4s ease;
+}
+
+.titleasignatura {
+  border-bottom: 1px dashed   #1A6AA7;
+  line-height: 0.9em;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+
+.textoasignatura {
+  text-align : justify;
+  color: #1A6AA7;
+  padding : 10px;
+}
+
+.asignatura:hover {
+    background-color: #1f7bc1;
+    color: white;
+}
+
+/*-----------------PRERREQUISITOS_________________*/
+/* Ocultar botón radio */
+input[id^="asignatura"]{
+display: none;
+}
+/* Estilo botón clicable */
+input[id^="asignatura"] + label {
+display: block;
+margin: 0 auto;
+cursor: pointer;
+}
+/* Estilo botón cuando su INPUT está seleccionado */
+input[id^="asignatura"]:checked + label {
+}
+
+/* Estilo caja SPOILER (inicialmente oculto) */
+input[id^="asignatura"] ~ .prerrequisitos{
+width: 90%;
+height: 0;
+overflow: hidden;
+opacity: 0;
+margin: 10px auto 0;
+}
+/* Estilo caja SPOILER cuando su INPUT está seleccionado */
+input[id^="asignatura"]:checked + label + .prerrequisitos{
+height: auto;
+opacity: 1;
+}
+.container-fluid{
+  padding-top: 20px;
+}
+/*estilos css tablas*/
+.table-users {
+  border: 1px solid #327a81;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  margin: 1em auto;
+  overflow: hidden;
+}
+.table-users .header {
+  background-color: #327a81;
+  color: white;
+  font-size: 1.1em;
+  padding: 1rem;
+  text-align: center;
+}
+.table-users td, th {
+  padding: 10px;
+}
+.table-users td {
+  color: #2b686e;
+  text-align: center;
+  vertical-align: middle;
+}
+table tr:nth-child(2n+1) {
+  background-color: white;
+}
+/**menú lateral**/
+.nav-pills > li > a {
+    border-radius: 4px;
+    background-color: #6b6d6e;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+.nav-pills > li > a:hover{
+    border-radius: 4px;
+    background-color: #8a8a8a !important;
+}
+.nav-pills > li > a:focus{
+    color: #fff;
+    border-radius: 4px;
+    background-color: #8a8a8a !important;
+}
+.dropdown-menu {
+    position: absolute !important;
+    top: 0%  !important;
+    left: 100%  !important;
+}
+ul.dropdown-menu {
+    color: #fff !important;
+    background-color: #8a8a8a !important;
+    border-color: #8a8a8a !important;
+}
+.nav-pills > a:hover, .dropdown-menu > li > a:focus {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #9a9a9a !important;
+}
+.mat-form-field {
+    width: 100% !important;
+}

@@ -1,0 +1,45 @@
+<div class="row text-left" style="padding-left: 15px;padding-bottom: 15px;">
+     <a [routerLink]="['../crearruta']" class="btn btn-success" ><span class="fa fa-plus" title="Agregar nueva ruta" ></span></a>
+</div>
+
+<table class="table">
+  <thead>
+      <tr>
+          <th>Sede</th>
+          <th>Pograma</th>
+          <th>Ruta</th>
+          <th>Creditos ruta</th>
+          <th>Publicada</th>
+          <th>Me gusta</th>
+          <th colspan="3">Opciones</th>
+      </tr>
+  </thead>
+  <tbody *ngIf="rutasPrograma?.length > 0;else content">
+      <tr *ngFor="let item of rutasPrograma" >
+          <td>{{ item.sede }}</td>
+          <td>{{ item.programa }}</td>
+          <td><a [routerLink]="['/asignaturasusuarios',item.cod_ruta,item.cod_uniprograma]"  >{{ item.nombre_ruta }}</a></td>
+          <td>{{ item.cred_ruta }}</td>
+          <td>{{ item.publica }}</td>
+          <td>{{ item.likes }} <i class="fa fa-thumbs-up text-primary "  > </i></td>
+          <td>
+            <a [routerLink]="['../editarruta',item.cod_ruta]" class="btn " >
+                <i class="fa fa-edit text-primary" title="Editar ruta"  ></i>
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['../asignaturasruta',item.cod_ruta]" class="btn " >
+                <i class="fa fa-plus text-secondary" title="Agregar asignaturas"  ></i>
+            </a>
+          </td>
+          <td>
+            <button (click)="eliminarRuta(item.cod_ruta)" class="btn  btn-outline" >
+                <i class="fa fa-trash text-danger" title="Eliminar ruta"  > </i>
+            </button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+    <b>Cargando</b> por favor espere
+</div>

@@ -1,0 +1,21 @@
+<div class="row" *ngIf="rutasPrograma" >
+  <div *ngFor="let item of rutasPrograma">
+    <div class="ruta col-md-5 text-md-center" >
+          <a [routerLink]="['/asignaturasusuarios',item.cod_ruta,item.cod_uniprograma]"  >
+          <div class="titleruta">
+            <b>RUTA - </b>{{ item.nombre_ruta }}
+                <a href="#" class="text-muted text-right " style="float:right"><i class="fa fa-thumbs-up "  > {{item.likes}} </i></a>
+
+          </div>
+        <div class="textoruta">
+          <b>Créditos: </b>{{ item.cred_ruta }}<br />
+          <b>Descripción:</b> {{ item.descripcion_ruta }}
+        </div>
+        </a>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="loading" class="alert alert-warning" role="alert">
+      <b>Cargando</b> por favor espere
+</div>

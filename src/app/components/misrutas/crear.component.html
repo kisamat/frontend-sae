@@ -1,0 +1,44 @@
+
+<div class="col-md-10">
+    <h2>Crear o editar ruta</h2>
+    <br>
+    <form name="form" (ngSubmit)="f.form.valid && guardarData()" #f="ngForm" novalidate>
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !idprograma.valid }">
+            <label for="username">Nombre de la ruta</label>
+            <br>
+            <select  name="idprograma"  [(ngModel)]="model.cod_uniprograma"  #idprograma="ngModel"  class="form-control" required>
+                <option [ngValue]="products">-- Seleccione la sede --</option>
+                <option *ngFor="let sede of programas" [value]="sede.cod_uniprograma" [selected]="model.cod_uniprograma"> {{ sede.programa }}  </option>
+            </select>
+            <div *ngIf="f.submitted && !idprograma.valid" class="help-block">Campo obligatorio</div>
+        </div>
+
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !nomruta.valid }">
+            <label for="username">Nombre de la ruta</label>
+            <br>
+            <input type="text" class="form-control" name="nomruta" [(ngModel)]="model.nombre_ruta" #nomruta="ngModel" required />
+            <div *ngIf="f.submitted && !nomruta.valid" class="help-block">Campo obligatorio</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !descripcion.valid }">
+            <label for="password">Descripción</label>
+            <br>
+            <textarea class="form-control" name="descripcion" [(ngModel)]="model.descripcion_ruta" #descripcion="ngModel" required >
+
+            </textarea>
+            <div *ngIf="f.submitted && !descripcion.valid" class="help-block">Campo obligatorio</div>
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn btn-primary">Enviar</button>
+
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+    </form>
+
+</div>
