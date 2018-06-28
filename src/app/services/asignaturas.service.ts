@@ -13,9 +13,9 @@ export class AsignaturasService {
 
   urlBusqueda:string=`${URL_API}asignaturas/asignaturas/asignaturas`;
   url_ruta:string=`${URL_API}asignaturas/asignaturas/rutas`;
-  urlAsginaturaUsuario:string=`${URL_API}asignaturas/asignaturas/asignaturasusuario`;
+  urlAsginaturaUsuario:string=`${URL_API}asignaturas/asignaturas/asignaturausuario`;
   //urlAsginaturaUsuario:string='http://localhost/rutas/backend/asignaturas/asignaturas/asignaturausuario';
-  urlAsignaturasUsuario:string='http://localhost/rutas/backend/asignaturas/asignaturas/agregarasig';
+  urlAsignaturasUsuario:string=`${URL_API}asignaturas/asignaturas/agregarasig`;
   constructor(private http:Http) { }
 
 

@@ -8,8 +8,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RutasusuariosService {
 
-  urlRutasUsuarios:string='http://localhost/rutas/backend/rutas/rutasusuarios/rutasusuarios';
-  urlListaRutasUsuarios:string='http://localhost/rutas/backend/rutas/rutasusuarios/listarrutasusuarios';
+  urlRutasUsuarios:string=`${URL_API}rutas/rutasusuarios/rutasusuarios`;
+  urlListaRutasUsuarios:string=`${URL_API}rutas/rutasusuarios/listarrutasusuarios`;
   constructor(private http:Http) { }
 
   getRutasUsuarios(termino?:any){

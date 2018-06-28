@@ -10,12 +10,14 @@ export class BuscarService {
   rutas:any=[];
 
   //urlBusqueda:string=`${URL_API}asignaturas/asignaturas/asigusuariosajax/`;
-  urlBusqueda:string='http://localhost/rutas/backend/asignaturas/asignaturas/asigusuariosajax/';
+  urlBusqueda:string=`${URL_API}asignaturas/asignaturas/asigusuariosajax/`;
 
   constructor(private http:Http) { }
 
-  search_word(term){
-        return this.http.get(this.urlBusqueda + term).map(res => {
+  search_word(term,usuario:string){
+
+        let url= `${this.urlBusqueda}${ usuario }/`;
+        return this.http.get(url + term).map(res => {
             //console.log(res.json().data)
             return res.json().data.map(item=>{
               //console.log(item.asignatura)

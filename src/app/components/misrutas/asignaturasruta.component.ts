@@ -20,6 +20,7 @@ export class AsignaturasrutaComponent implements OnInit {
   searchResult = [];
   id:any;
   asignaturas: any =[];
+  usuario = JSON.parse(localStorage.getItem('currentUser'));
 
 
 
@@ -28,7 +29,7 @@ export class AsignaturasrutaComponent implements OnInit {
     this.searchTerm.valueChanges
         .debounceTime(400)
         .subscribe(data => {
-            this._buscar.search_word(data).subscribe(response =>{
+            this._buscar.search_word(data,this.usuario.username).subscribe(response =>{
               //console.log(response);
                 this.searchResult = response
             })
@@ -63,20 +64,24 @@ export class AsignaturasrutaComponent implements OnInit {
        title: 'Confirmación',
        message: '¿Desea eliminar este item?'})
        .subscribe((isConfirmed) => {
+        //console.log(isConfirmed);
+        if(isConfirmed){
+          let splitted = this.asignaturas[idAsig].split("-", 1)
+          //console.log(splitted[0]);
+          this.asignaturas.splice(idAsig, 1);
+          this._asignaturas.eliminarAsigUsuario(splitted[0],this.id)
+              .subscribe(data=>{
+                  setTimeout(()=>{
+                    this.loading=false
+                    console.log(data);
+                           //this.like = 0;
+                  })
+              })
+        }
          //console.log(idAsig);
          //console.log(this.asignaturas[idAsig]);
-         let splitted = this.asignaturas[idAsig].split("-", 1)
-         //console.log(splitted[0]);
-         this.asignaturas.splice(idAsig, 1);
-         this._asignaturas.eliminarAsigUsuario(splitted[0],this.id)
-                     .subscribe(data=>{
-                        setTimeout(()=>{
-                          this.loading=false
-                          console.log(data);
-                          //this.like = 0;
-                        })
-                     })
-         this.confirmResult = isConfirmed;
+         
+         
      });
 
   }

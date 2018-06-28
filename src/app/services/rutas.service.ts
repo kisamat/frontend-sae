@@ -16,7 +16,7 @@ export class RutasService {
   urlUsuarioLike:string=`${URL_API}rutas/rutas/likeusuario`;
   urlUsuarioUnlike:string=`${URL_API}rutas/rutas/unlikeusuario`;
   urlRutaUsuario:string=`${URL_API}rutas/rutas/rutausuario`;
-  urlRutasUsuarios:string='http://localhost/rutas/backend/rutas/rutasusuarios/rutasusuarios';
+  urlRutasUsuarios:string=`${URL_API}rutas/rutasusuarios/rutasusuarios`;
 
   constructor(private http:Http) { }
 

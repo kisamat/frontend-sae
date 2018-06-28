@@ -39,15 +39,16 @@ export class MisrutasComponent implements OnInit {
       message: '¿Desea eliminar este item?'})
       .subscribe((isConfirmed) => {
         console.log(idruta);
-        this._rutas.eliminarRutaUsuario(idruta)
-                    .subscribe(data=>{
-                       setTimeout(()=>{
-                         this.loading=false
-                         console.log(data);
-                         //this.like = 0;
-                       })
-                    })
-        this.confirmResult = isConfirmed;
+        if(isConfirmed){
+          this._rutas.eliminarRutaUsuario(idruta)
+              .subscribe(data=>{
+                  setTimeout(()=>{
+                    this.loading=false
+                    console.log(data);
+                    //this.like = 0;
+                  })
+              })
+        }
     });
 
 
