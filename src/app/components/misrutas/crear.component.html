@@ -5,11 +5,11 @@
     <form name="form" (ngSubmit)="f.form.valid && guardarData()" #f="ngForm" novalidate>
 
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !idprograma.valid }">
-            <label for="username">Nombre de la ruta</label>
+            <label for="username">Programa</label>
             <br>
             <select  name="idprograma"  [(ngModel)]="model.cod_uniprograma"  #idprograma="ngModel"  class="form-control" required>
-                <option [ngValue]="products">-- Seleccione la sede --</option>
-                <option *ngFor="let sede of programas" [value]="sede.cod_uniprograma" [selected]="model.cod_uniprograma"> {{ sede.programa }}  </option>
+                <option [value]="selectUndefinedOptionValue">-- Seleccione el programa --</option>
+                <option *ngFor="let sede of programas" [value]="sede.cod_uniprograma"  > {{ sede.programa }}  </option>
             </select>
             <div *ngIf="f.submitted && !idprograma.valid" class="help-block">Campo obligatorio</div>
         </div>

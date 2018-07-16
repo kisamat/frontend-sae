@@ -32,19 +32,21 @@ export class MisrutasComponent implements OnInit {
               }, 1000)
           });
   }
-  eliminarRuta(idruta){
+  eliminarRuta(idruta,i){
 
     this.SimpleModalService.addModal(ConfirmComponent, {
       title: 'Confirmación',
       message: '¿Desea eliminar este item?'})
       .subscribe((isConfirmed) => {
-        console.log(idruta);
+        //console.log(idruta);
+        //console.log(i);
         if(isConfirmed){
+          this.rutasPrograma.splice(i, 1);
           this._rutas.eliminarRutaUsuario(idruta)
               .subscribe(data=>{
                   setTimeout(()=>{
                     this.loading=false
-                    console.log(data);
+                    //console.log(data);
                     //this.like = 0;
                   })
               })

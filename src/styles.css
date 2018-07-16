@@ -258,3 +258,7 @@ ul.dropdown-menu {
 .mat-form-field {
     width: 100% !important;
 }
+.mat-form-field-flex {
+  border: 1px solid white;
+  background: white;
+}

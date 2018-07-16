@@ -55,7 +55,11 @@ export class AsignaturasrutaComponent implements OnInit {
   ngOnInit() {
   }
   public onFormSubmit(){
-    this.asignaturas.push(this.searchTerm.value);
+    console.log(this.searchTerm.value);
+    if(this.searchTerm.value!=null){
+      this.asignaturas.push(this.searchTerm.value);
+    }
+    
      //console.log(this.asignaturas);
   }
   public eliminarItem(idAsig:number){
@@ -94,9 +98,9 @@ export class AsignaturasrutaComponent implements OnInit {
                              console.log(data);
                                //this.like = 0;
                            });
-
+                      this.router.navigate(['/rutasusuarios/misrutas']);      
                       });
-      //this.router.navigate(['/rutasusuarios/misrutas']);
+      
   }
 
 

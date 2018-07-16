@@ -15,7 +15,7 @@
       </tr>
   </thead>
   <tbody *ngIf="rutasPrograma?.length > 0;else content">
-      <tr *ngFor="let item of rutasPrograma" >
+      <tr *ngFor="let item of rutasPrograma; let i = index" >
           <td>{{ item.sede }}</td>
           <td>{{ item.programa }}</td>
           <td><a [routerLink]="['/asignaturasusuarios',item.cod_ruta,item.cod_uniprograma]"  >{{ item.nombre_ruta }}</a></td>
@@ -33,7 +33,7 @@
             </a>
           </td>
           <td>
-            <button (click)="eliminarRuta(item.cod_ruta)" class="btn  btn-outline" >
+            <button (click)="eliminarRuta(item.cod_ruta,i)" class="btn  btn-outline" >
                 <i class="fa fa-trash text-danger" title="Eliminar ruta"  > </i>
             </button>
           </td>

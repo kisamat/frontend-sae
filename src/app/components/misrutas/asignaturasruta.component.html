@@ -1,9 +1,10 @@
+
 <div class="col-md-12">
-    <br />
+<h3>Ingrese parte del nombre de la asignatura que desea agregar</h3>    
 <form class="example-form" (ngSubmit)="onFormSubmit()">
   <div class="form-group">
   <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Buscar asignaturas" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+      <input type="text" placeholder="Buscar" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let item of searchResult" [value]="item">
           {{ item }}
@@ -11,7 +12,7 @@
       </mat-autocomplete>
     </mat-form-field>
 </div>
-  <!--- Buttons Block --->
+  <!--- Buttons Block -->
             <div class="form-group">
                 <button type="reset" class="btn btn-default">Limpiar</button>
                 <button type="submit" class="btn btn-primary">Agregar</button>
@@ -31,7 +32,7 @@
       </tr>
       <tr>
         <td colspan="2" >
-            <button (click)="guardarLista()" > Actualizar lista  </button>
+            <button (click)="guardarLista()" > Guardar  </button>
         </td>
       </tr>
   </tbody>
