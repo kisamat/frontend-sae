@@ -8,22 +8,29 @@
   </div>
 </div>
 <br style="wrap:both">
+<div class="row">
+    <div class="col-md-2" >
+    </div>
+    <div class="col-md-8 col-xs-12 alert alert-info" style="line-height: normal">
+        <p>
+            Las <b>Rutas Curriculares</b> Son los trayectos que el estudiante encuentra dentro del plan de estudios que visibilizan las oportunidades académicas que le permitirán la consecución de sus intereses y necesidades de formación.
+        </p>
+        <p>
+            Las rutas contienen la información de asignaturas optativas y de libre elección, que están articuladas con los objetivos del programa, campos de acción profesional y perfiles del egresado, facilitando que el estudiante oriente la elección de asignaturas con miras al ejercicio futuro de su profesión.
+        </p>
+    </div>
+
+</div>
 <div class="row ">
-        <div class="col-md-8 col-xs-12 alert alert-info" style="line-height: normal">
-          <p>
-              Las <b>Rutas Curriculares</b> Son los trayectos que el estudiante encuentra dentro del plan de estudios que visibilizan las oportunidades académicas que le permitirán la consecución de sus intereses y necesidades de formación.
-          </p>
-          <p>
-              Las rutas contienen la información de asignaturas optativas y de libre elección, que están articuladas con los objetivos del programa, campos de acción profesional y perfiles del egresado, facilitando que el estudiante oriente la elección de asignaturas con miras al ejercicio futuro de su profesión.
-          </p>
-        </div>
-        <div class="col-md-8 col-xs-12">
-          <label for="idsede">Seleccione la sede</label>
-          <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
-              <option [ngValue]="products">-- Seleccione la sede --</option>
-              <option *ngFor="let sede of sedes" [value]="sede.cod_sede" [selected]="idsede == sede.cod_sede"> {{ sede.sede }}  </option>
-          </select>
-        </div>
+    <div class="col-md-2" >
+    </div>    
+    <div class="col-md-8 col-xs-12">
+        <label for="idsede">Seleccione la sede</label>
+        <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
+            <option [ngValue]="products">-- Seleccione la sede --</option>
+            <option *ngFor="let sede of sedes" [value]="sede.cod_sede" [selected]="idsede == sede.cod_sede"> {{ sede.sede }}  </option>
+        </select>
+    </div>
         <!--<div class="col-md-2 col-xs-6">
             <button (click)="listarFacultades()" type="button" class="btn btn-info" >Ver facultades</button>
     </div>-->

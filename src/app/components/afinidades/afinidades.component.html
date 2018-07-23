@@ -8,12 +8,19 @@
   </div>
 </div>
 <br style="wrap:both">
-<div class="row ">
-        <div class="col-md-8 col-xs-12 alert alert-info" style="line-height: normal">
-          <p>
+<div class="row">
+    <div class="col-md-2" >
+    </div>
+    <div class="col-md-8 col-xs-12 alert alert-info" style="line-height: normal">
+        <p>
             El <strong>	Análisis de Afinidades</strong> entre planes de estudio es un insumo que sirve para guiar a los estudiantes en el diseño de posibles rutas curriculares y en las posibilidades de doble titulación. El resultado de este análisis es un listado de planes de estudio con los cuales es posible realizar una doble titulación   Este análisis se basa en el número de créditos comunes entre planes, el cual se compone de: (i) créditos de asignaturas comunes,  (ii)  créditos de libre elección y (iii) créditos ganados e invertidos en un segundo plan. La tabla que muestra los resultados, ilustra para cada programa donde es posible realizar una doble titulación, el número de créditos exigidos en un segundo plan, el número de créditos comunes y el número de créditos excedentes correspondiente a la diferencia entre los créditos comunes y los créditos en el segundo plan. Los programas destino se ordenan de acuerdo al número de créditos excedentes, de forma tal que se muestra prioritariamente a los programas con los cuales se tiene una mayor holgura para realizar una doble titulación.
-          </p>
+        </p>
+    </div>
+</div>
+<div class="row ">
+        <div class="col-md-2" >
         </div>
+        
         <div class="col-md-8 col-xs-12">
           <label for="idsede">Seleccione la sede</label>
           <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
