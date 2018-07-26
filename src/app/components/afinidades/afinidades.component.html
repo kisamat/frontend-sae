@@ -20,7 +20,7 @@
 <div class="row ">
         <div class="col-md-2" >
         </div>
-        
+
         <div class="col-md-8 col-xs-12">
           <label for="idsede">Seleccione la sede</label>
           <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
@@ -63,53 +63,61 @@
     </div>-->
 </div>
 <br style="wrap:both">
+<div class="row" *ngIf="idprograma">
+  <div *ngIf="afinidades.length>0 else programas" >
+          <div class="col-md-4 col-xs2" >
+          </div>
+          <div class="col-md-4 col-md-6 col-xs-8">
+              <table class="table table-users table-responsive">
+                  <thead  >
+                      <tr class="header">
+                        <th colspan="4" class="text-center" >
+                            AFINIDADES
+                        </th>
+                      </tr>
+                      <tr class="header">
+                        <th rowspan="2" class="text-center" >
+                            Programa
+                        </th>
+                        <th  colspan="3" class="text-center">
+                            Créditos
+                        </th>
+                      </tr>
+                      <tr class="header">
+                        <th  class="text-center">
+                            Exigidos
+                        </th>
+                        <th class="text-center" >
+                            Comunes
+                        </th>
+                        <th  class="text-center">
+                            Excedentes
+                        </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let afinidad of afinidades">
+                        <td>{{ afinidad.programa_d }}</td>
+                        <td>{{ afinidad.creditos_d }}</td>
+                        <td>{{ afinidad.creditos_comunes }}</td>
+                        <td>{{ afinidad.creditos_comunes - afinidad.creditos_d }}</td>
+                      </tr>
+                  </tbody>
 
-<div class="row" *ngIf="afinidades.length>0" >
+              </table>
+            </div>
 
-
-
-  <div class="col-md-4 col-xs2" >
   </div>
-  <div class="col-md-4 col-md-6 col-xs-8">
-      <table class="table table-users table-responsive">
-          <thead  >
-              <tr class="header">
-                <th colspan="4" class="text-center" >
-                    AFINIDADES
-                </th>
-              </tr>
-              <tr class="header">
-                <th rowspan="2" class="text-center" >
-                    Programa
-                </th>
-                <th  colspan="3" class="text-center">
-                    Créditos
-                </th>
-              </tr>
-              <tr class="header">
-                <th  class="text-center">
-                    Exigidos
-                </th>
-                <th class="text-center" >
-                    Comunes
-                </th>
-                <th  class="text-center">
-                    Excedentes
-                </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let afinidad of afinidades">
-                <td>{{ afinidad.programa_d }}</td>
-                <td>{{ afinidad.creditos_d }}</td>
-                <td>{{ afinidad.creditos_comunes }}</td>
-                <td>{{ afinidad.creditos_comunes - afinidad.creditos_d }}</td>
-              </tr>
-          </tbody>
-
-      </table>
+  <ng-template #programas>
+    <div class="col-md-2 col-xs2" >
     </div>
+    <div class="alert alert-danger col-md-8  col-xs-8">
+        <p>De acuerdo con el análisis realizado, el programa no cuenta con programas afines para doble titulación. Sin embargo, los estudiante pueden realizar solicitudes de doble titulación, mientras cumplan las condiciones establecidas en los artículos 47 al 50 del Acuerdo 008 del 2008 del CSU  y el Acuerdo 155 de 2014 del  CSU. </p>
+    </div>
+  </ng-template>
 </div>
+
+
 
 
 <div *ngIf="loading" class="alert alert-warning" role="alert">

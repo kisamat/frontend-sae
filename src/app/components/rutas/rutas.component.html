@@ -23,7 +23,7 @@
 </div>
 <div class="row ">
     <div class="col-md-2" >
-    </div>    
+    </div>
     <div class="col-md-8 col-xs-12">
         <label for="idsede">Seleccione la sede</label>
         <select [(ngModel)]="idsede" name="idsede"  #ctrl="ngModel" (change)='listarFacultades()' class="form-control">
@@ -67,23 +67,33 @@
 </div>
 <br style="wrap:both">
 <div class="row" *ngIf="rutasPrograma" >
-  <div *ngFor="let ruta of rutasPrograma">
+  <div *ngIf="rutasPrograma.length==0 else programas" role="alert" >
     <div class="col-md-2" >
     </div>
-    <div class="ruta col-md-4 text-md-center" >
-          <a [routerLink]="['/asignaturas',ruta.cod_ruta,idprograma]"  >
-          <div class="titleruta">
-            <b>RUTA - </b>{{ ruta.nombre_ruta }}
-          </div>
-        <div class="textoruta">
-          <b>Créditos: </b>{{ ruta.cred_ruta }}<br />
-          <b>Descripción:</b> {{ ruta.descripcion_ruta }}
-        </div>
-        </a>
+    <div class="alert alert-danger col-md-8 text-md-center" >
+        <p>Este programa no cuenta con rutas propuesta por el programa curricular.</p>
     </div>
 
   </div>
+  <ng-template #programas>
+    <div *ngFor="let ruta of rutasPrograma">
+        <div class="col-md-2" >
+        </div>
+        <div class="ruta col-md-4 text-md-center" >
+              <a [routerLink]="['/asignaturas',ruta.cod_ruta,idprograma]"  >
+              <div class="titleruta">
+                <b>RUTA - </b>{{ ruta.nombre_ruta }}
+              </div>
+            <div class="textoruta">
+              <b>Créditos: </b>{{ ruta.cred_ruta }}<br />
+              <b>Descripción:</b> {{ ruta.descripcion_ruta }}
+            </div>
+            </a>
+        </div>
+    </div>
+  </ng-template>
 </div>
+
 <div *ngIf="loading" class="alert alert-warning" role="alert">
     <b>Cargando</b> por favor espere
 </div>

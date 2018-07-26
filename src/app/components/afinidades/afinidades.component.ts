@@ -53,6 +53,7 @@ export class AfinidadesComponent implements OnInit {
     }
     listarFacultades(){
         //console.log(this.idsede);
+
         localStorage.setItem('idsede',this.idsede.toString());
         this._programas.getFacultades(parseInt(this.idsede))
             .subscribe(data=>{
