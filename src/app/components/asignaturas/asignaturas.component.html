@@ -2,10 +2,10 @@
     <div class="regresar text-right "><a [routerLink]="['/rutas']" class="btn btn-success" >Volver a rutas</a></div>
 </div>
 <div class="alert like-ruta" >
-  <p>  
+  <p>
       <b>Programa: </b>{{programa_actual}}<br />
       <b>Ruta: </b>{{nombre_ruta}}
-  </p>    
+  </p>
 </div>
 
 <div class="row">
@@ -31,7 +31,7 @@
         </label>
         <div class="prerrequisitos"><b>Prerrequisitos:</b><br />
           <span *ngIf="asignatura.prerrequisito=='' && asignatura.prerrequisito_cred==''">
-            La asignatura no tiene prerrequisitos en este plan de estudios.
+            De acuerdo a la información suministrada por el SIA, esta asignatura no registra otras asignaturas como prerrequisitos en este plan de estudios. Sin embargo, lo invitamos a consultar en los planes que ofertan la asignatura otro tipo de prerrequisitos. puede consultarlos <a href="http://www.pregrado.unal.edu.co/index.php/programas" target="_blank">aquí</a>
           </span>
           <span *ngFor="let prerrequisito of asignatura.prerrequisito">
             {{ prerrequisito.cod_prerrequisito }} - {{ prerrequisito.nombre_asignatura }} <br />
